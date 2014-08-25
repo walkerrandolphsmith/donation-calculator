@@ -1,0 +1,76 @@
+@import "../scripts/_libs/bootstrap/dist/css/bootstrap.css";
+@import url(https://fonts.googleapis.com/css?family=Puritan:400,700|Oswald);
+@import url(https://fonts.googleapis.com/css?family=Dosis:200,600);
+/*************************************************************
+
+      Utilities
+
+**************************************************************/
+/*
+    grayscale, invert, sepia, contrast, saturate (%)
+    brightness(real)
+    blur(px)
+    hue-rotate(deg)
+*/
+/*************************************************************
+
+      End of Utilities
+
+**************************************************************/
+.results span {
+  font-family: 'Oswald';
+  font-size: 36px;
+  top: 18px;
+  left: 18px;
+  color: #000;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.4);
+}
+/*
+ *
+ * iPad 3+
+ *
+ */
+/*
+ *
+ * iPad Retina
+ *
+ */
+/*
+ *
+ * iPad 1 & 2 & Mini
+ *
+ */
+/*
+ *
+ * iPhone 5
+ *
+ */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  svg {
+    width: 50%;
+    height: 50%;
+  }
+  .hi-icon {
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+  }
+  .hi-icon:before {
+    line-height: 50px !important;
+  }
+  .hi-icon:after {
+    line-height: 50px !important;
+  }
+}
+/*
+ *
+ * iPhone <5
+ *
+ */
+/*
+ *
+ * Web
+ *
+ */
