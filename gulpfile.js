@@ -1,41 +1,99 @@
+'use strict';
+
 var gulp = require('gulp');
-
 var less = require('gulp-less');
-var minifyCSS = require('gulp-minify-css');
-connect = require('gulp-connect');
-lr = require('tiny-lr');
+var minifyCss = require('gulp-minify-css');
+var uglify = require('gulp-uglify');
+var args = require('yargs').argv;
+var clean = require('gulp-clean');
+var rename = require('gulp-rename');
+var browserify = require('gulp-browserify');
+var connect = require('gulp-connect');
+var watch = require('gulp-watch');
+var config = {
+    optimize: args.optimize || false,
+    port: 8094,
+    src: {
+        styles: './src/styles/styles.less',
+        scripts: './src/app/index.js',
+        html: ['./src/index.html']
+    },
+    dest: {
+        path: './public',
+        styles: './public/css',
+        scripts: './public/js'
+    }
+};
 
-
-// Compile Less
-gulp.task('less', function() {
-    return gulp.src('src/styles/styles.less')
-        .pipe(less())
-        .pipe(gulp.dest('app/styles'));
+gulp.task('styles', ['clean'], function () {
+    return  styles(gulp.src(config.src.styles));
 });
 
-//Concat & Minify CSS
-gulp.task('styles', function(){
-    gulp.src('app/styles/styles.css')
-        .pipe(concat('styles.css'))
-        .pipe(minifyCSS(opts))
-        .pipe(gulp.dest('app/styles'))
+gulp.task('scripts', ['clean'], function () {
+    return scripts(gulp.src(config.src.scripts));
 });
 
-
-// Watch Files For Changes
-gulp.task('watch', function() {
-    gulp.watch('src/styles/*.less', ['less']);
+gulp.task('clean', [], function () {
+    return gulp.src(config.dest.path, {read: false})
+        .pipe(clean());
 });
 
-gulp.task('connect', function(){
-    connect.server({
-        root: ['app'],
-        port: 4000,
-        liverreload: true
+gulp.task('dev', ['clean', 'connect'], function () {
+    var styleStream = gulp.src(config.src.styles)
+        .pipe(watch());
+    styles(styleStream)
+        .pipe(connect.reload());
+    var scriptsStream = gulp.src(config.src.scripts)
+        .pipe(watch());
+    scripts(scriptsStream)
+        .pipe(connect.reload());
+    var htmlStream = gulp.src(config.src.html)
+        .pipe(watch());
+    html(htmlStream)
+        .pipe(connect.reload());
+});
+
+gulp.task('connect', function () {
+    return connect.server({
+        root: config.dest.path,
+        port: config.port,
+        livereload: true
     });
 });
 
-gulp.task('run', ['connect', 'watch']);
+gulp.task('html', ['clean'], function () {
+    return html(gulp.src(config.src.html));
 
-// Default Task
-gulp.task('default', ['less', 'run']);
+});
+
+gulp.task('default', ['dev'], function () {
+});
+
+gulp.task('build', ['scripts', 'styles', 'html'], function () {
+});
+
+function styles(stream) {
+    stream
+        .pipe(less())
+        .pipe(rename('main.css'));
+    if (config.optimize) {
+        stream.pipe(minifyCss());
+    }
+    return stream
+        .pipe(gulp.dest(config.dest.styles));
+
+}
+function scripts(stream) {
+    stream
+        .pipe(browserify())
+        .pipe(rename('main.js'));
+    if (config.optimize) {
+        stream.pipe(uglify());
+    }
+    return stream
+        .pipe(gulp.dest(config.dest.scripts));
+}
+function html(stream) {
+    return stream
+        .pipe(gulp.dest(config.dest.path));
+}
