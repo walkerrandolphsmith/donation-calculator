@@ -19,7 +19,7 @@ var config = {
     optimize: args.optimize || false,
     port: 8094,
     styles: {
-        src: './src/styles/styles.less',
+        src: './src/styles/index.less',
         dest: './public/css',
         name: pkg.name + '.css'
     },
@@ -91,7 +91,7 @@ gulp.task('tests-unit', [], function (done) {
 function styles(stream) {
     stream
         .pipe(less())
-        .pipe(rename('main.css'));
+        .pipe(rename(config.styles.name));
     if (config.optimize) {
         stream.pipe(minifyCss());
     }
@@ -102,7 +102,7 @@ function styles(stream) {
 function scripts(stream) {
     stream
         .pipe(browserify())
-        .pipe(rename('main.js'));
+        .pipe(rename(config.scripts.name));
     if (config.optimize) {
         stream.pipe(uglify());
     }
@@ -111,6 +111,5 @@ function scripts(stream) {
 }
 function html(stream) {
     return stream
-        .pipe(nunjucks())
         .pipe(gulp.dest(config.html.dest));
 }

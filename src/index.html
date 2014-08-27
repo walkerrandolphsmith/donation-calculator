@@ -3,16 +3,22 @@
 <head>
     <title></title>
     <meta name="viewport" content="width=device-width"/>
-    <link href="css/donation.css" rel="stylesheet"/>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/donation.css" rel="stylesheet"/>
 </head>
 
 <body>
-
 <div class="container">
-    {% include "templates/donation-widget.html" %}
-</div>
-<script src="js/donation.js"></script>
+    <!--This is the element that the donation calculator will attach to and build out any UI it needs.-->
+    <div id="donationCalculator">
+        <h2>Donation Calculator</h2>
+        <label>Goal: <input type="text"/></label> <label># of People: <input type="text"/></label>
+        <button type="button">Calculate</button>
 
+        <p>You need to sell at least <span></span> CD(s).</p>
+    </div>
+</div>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/donation.js"></script>
 </body>
 </html>
