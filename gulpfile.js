@@ -10,44 +10,51 @@ var rename = require('gulp-rename');
 var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
 var watch = require('gulp-watch');
+var pkg = require('./package.json');
 var config = {
     optimize: args.optimize || false,
     port: 8094,
-    src: {
-        styles: './src/styles/styles.less',
-        scripts: './src/app/index.js',
-        html: ['./src/index.html']
+    styles: {
+        src: './src/styles/styles.less',
+        dest: './public/css',
+        name: pkg.name + '.css'
     },
-    dest: {
-        path: './public',
-        styles: './public/css',
-        scripts: './public/js'
+    scripts: {
+        src: './src/app/index.js',
+        dest: './public/js',
+        name: pkg.name + '.js'
+
+    },
+    html : {
+        src: ['./src/index.html'],
+        dest: './public',
+        name: 'index.html'
     }
 };
 
 gulp.task('styles', ['clean'], function () {
-    return  styles(gulp.src(config.src.styles));
+    return  styles(gulp.src(config.styles.src));
 });
 
 gulp.task('scripts', ['clean'], function () {
-    return scripts(gulp.src(config.src.scripts));
+    return scripts(gulp.src(config.scripts.src));
 });
 
 gulp.task('clean', [], function () {
-    return gulp.src(config.dest.path, {read: false})
+    return gulp.src(config.html.dest, {read: false})
         .pipe(clean());
 });
 
 gulp.task('dev', ['clean', 'connect'], function () {
-    var styleStream = gulp.src(config.src.styles)
+    var styleStream = gulp.src(config.styles.src)
         .pipe(watch());
     styles(styleStream)
         .pipe(connect.reload());
-    var scriptsStream = gulp.src(config.src.scripts)
+    var scriptsStream = gulp.src(config.scripts.src)
         .pipe(watch());
     scripts(scriptsStream)
         .pipe(connect.reload());
-    var htmlStream = gulp.src(config.src.html)
+    var htmlStream = gulp.src(config.html.src)
         .pipe(watch());
     html(htmlStream)
         .pipe(connect.reload());
@@ -55,14 +62,14 @@ gulp.task('dev', ['clean', 'connect'], function () {
 
 gulp.task('connect', function () {
     return connect.server({
-        root: config.dest.path,
+        root: config.html.dest,
         port: config.port,
         livereload: true
     });
 });
 
 gulp.task('html', ['clean'], function () {
-    return html(gulp.src(config.src.html));
+    return html(gulp.src(config.html.src));
 
 });
 
@@ -80,7 +87,7 @@ function styles(stream) {
         stream.pipe(minifyCss());
     }
     return stream
-        .pipe(gulp.dest(config.dest.styles));
+        .pipe(gulp.dest(config.styles.dest));
 
 }
 function scripts(stream) {
@@ -91,9 +98,10 @@ function scripts(stream) {
         stream.pipe(uglify());
     }
     return stream
-        .pipe(gulp.dest(config.dest.scripts));
+        .pipe(gulp.dest(config.scripts.dest));
 }
 function html(stream) {
     return stream
-        .pipe(gulp.dest(config.dest.path));
+        .pipe(rename('index.html'))
+        .pipe(gulp.dest(config.html.dest));
 }
