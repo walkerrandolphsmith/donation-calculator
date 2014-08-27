@@ -5,8 +5,8 @@
   "dependencies": {
     "jquery": "~2.0.0",
     "bootstrap": "~3.2.0",
-    "font-awesome": "~4.1.0"
+    "font-awesome": "~4.1.0",
+    "commonjs-require-definition": "~0.1.2"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

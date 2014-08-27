@@ -1,0 +1,152 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.10.21/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@1.3.11
+3 info using node@v0.10.21
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/Users/andrewsmith/Developer/Repositories/donation-calculator',
+5 verbose install   [ 'gulp-less',
+5 verbose install     'gulp',
+5 verbose install     'gulp-minify-css',
+5 verbose install     'yargs',
+5 verbose install     'gulp-clean',
+5 verbose install     'gulp-uglify',
+5 verbose install     'gulp-connect',
+5 verbose install     'gulp-livereload',
+5 verbose install     'bower',
+5 verbose install     'gulp-mustache',
+5 verbose install     'gulp-nunjucks',
+5 verbose install     'gulp-nunjucks-render',
+5 verbose install     'karma-chrome-launcher',
+5 verbose install     'karma-phantomjs-launcher',
+5 verbose install     'mocha',
+5 verbose install     'phantomjs',
+5 verbose install     'karma',
+5 verbose install     'karma-mocha',
+5 verbose install     'chai',
+5 verbose install     'karma-chai',
+5 verbose install     'sinon',
+5 verbose install     'karma-sinon',
+5 verbose install     'karma-junit-reporter',
+5 verbose install     'commonjs',
+5 verbose install     'karma-commonjs' ] ]
+6 info preinstall donation@0.0.1
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping gulp-less@~1.2.3 /Users/andrewsmith/Developer/Repositories/donation-calculator
+9 verbose already installed skipping gulp@~3.6.2 /Users/andrewsmith/Developer/Repositories/donation-calculator
+10 verbose already installed skipping gulp-minify-css@~0.3.1 /Users/andrewsmith/Developer/Repositories/donation-calculator
+11 verbose already installed skipping yargs@~1.3.1 /Users/andrewsmith/Developer/Repositories/donation-calculator
+12 verbose already installed skipping gulp-clean@~0.3.1 /Users/andrewsmith/Developer/Repositories/donation-calculator
+13 verbose already installed skipping gulp-uglify@~0.3.2 /Users/andrewsmith/Developer/Repositories/donation-calculator
+14 verbose already installed skipping gulp-connect@~2.0.6 /Users/andrewsmith/Developer/Repositories/donation-calculator
+15 verbose already installed skipping gulp-livereload@~1.2.0 /Users/andrewsmith/Developer/Repositories/donation-calculator
+16 verbose already installed skipping bower@~1.3.1 /Users/andrewsmith/Developer/Repositories/donation-calculator
+17 verbose already installed skipping gulp-nunjucks@~1.0.0 /Users/andrewsmith/Developer/Repositories/donation-calculator
+18 verbose already installed skipping gulp-mustache@~0.4.0 /Users/andrewsmith/Developer/Repositories/donation-calculator
+19 verbose already installed skipping gulp-nunjucks-render@~0.1.1 /Users/andrewsmith/Developer/Repositories/donation-calculator
+20 verbose already installed skipping karma-chrome-launcher@~0.1.4 /Users/andrewsmith/Developer/Repositories/donation-calculator
+21 verbose already installed skipping karma-phantomjs-launcher@~0.1.4 /Users/andrewsmith/Developer/Repositories/donation-calculator
+22 verbose already installed skipping phantomjs@~1.9.7-15 /Users/andrewsmith/Developer/Repositories/donation-calculator
+23 verbose already installed skipping mocha@~1.21.4 /Users/andrewsmith/Developer/Repositories/donation-calculator
+24 verbose already installed skipping karma@~0.12.22 /Users/andrewsmith/Developer/Repositories/donation-calculator
+25 verbose already installed skipping karma-mocha@~0.1.9 /Users/andrewsmith/Developer/Repositories/donation-calculator
+26 verbose already installed skipping karma-chai@~0.1.0 /Users/andrewsmith/Developer/Repositories/donation-calculator
+27 verbose already installed skipping chai@~1.9.1 /Users/andrewsmith/Developer/Repositories/donation-calculator
+28 verbose already installed skipping sinon@~1.10.3 /Users/andrewsmith/Developer/Repositories/donation-calculator
+29 verbose already installed skipping karma-sinon@~1.0.3 /Users/andrewsmith/Developer/Repositories/donation-calculator
+30 verbose already installed skipping karma-junit-reporter@~0.2.2 /Users/andrewsmith/Developer/Repositories/donation-calculator
+31 verbose cache add [ 'karma-commonjs@~0.2', null ]
+32 verbose cache add name=undefined spec="karma-commonjs@~0.2" args=["karma-commonjs@~0.2",null]
+33 verbose parsed url { protocol: null,
+33 verbose parsed url   slashes: null,
+33 verbose parsed url   auth: null,
+33 verbose parsed url   host: null,
+33 verbose parsed url   port: null,
+33 verbose parsed url   hostname: null,
+33 verbose parsed url   hash: null,
+33 verbose parsed url   search: null,
+33 verbose parsed url   query: null,
+33 verbose parsed url   pathname: 'karma-commonjs@~0.2',
+33 verbose parsed url   path: 'karma-commonjs@~0.2',
+33 verbose parsed url   href: 'karma-commonjs@~0.2' }
+34 verbose cache add name="karma-commonjs" spec="~0.2" args=["karma-commonjs","~0.2"]
+35 verbose parsed url { protocol: null,
+35 verbose parsed url   slashes: null,
+35 verbose parsed url   auth: null,
+35 verbose parsed url   host: null,
+35 verbose parsed url   port: null,
+35 verbose parsed url   hostname: null,
+35 verbose parsed url   hash: null,
+35 verbose parsed url   search: null,
+35 verbose parsed url   query: null,
+35 verbose parsed url   pathname: '~0.2',
+35 verbose parsed url   path: '~0.2',
+35 verbose parsed url   href: '~0.2' }
+36 verbose addNamed [ 'karma-commonjs', '~0.2' ]
+37 verbose addNamed [ null, '>=0.2.0-0 <0.3.0-0' ]
+38 verbose already installed skipping commonjs@0.0.1 /Users/andrewsmith/Developer/Repositories/donation-calculator
+39 silly lockFile a48cec5d-karma-commonjs-0-2 karma-commonjs@~0.2
+40 verbose lock karma-commonjs@~0.2 /Users/andrewsmith/.npm/a48cec5d-karma-commonjs-0-2.lock
+41 silly addNameRange { name: 'karma-commonjs',
+41 silly addNameRange   range: '>=0.2.0-0 <0.3.0-0',
+41 silly addNameRange   hasData: false }
+42 verbose url raw karma-commonjs
+43 verbose url resolving [ 'https://registry.npmjs.org/', './karma-commonjs' ]
+44 verbose url resolved https://registry.npmjs.org/karma-commonjs
+45 info trying registry request attempt 1 at 23:53:45
+46 verbose etag "2CCJ9OEDTDUM8R6O8O20E5729"
+47 http GET https://registry.npmjs.org/karma-commonjs
+48 http 304 https://registry.npmjs.org/karma-commonjs
+49 silly registry.get cb [ 304,
+49 silly registry.get   { date: 'Wed, 27 Aug 2014 03:53:45 GMT',
+49 silly registry.get     server: 'Apache',
+49 silly registry.get     via: '1.1 varnish',
+49 silly registry.get     'last-modified': 'Wed, 27 Aug 2014 03:53:45 GMT',
+49 silly registry.get     'cache-control': 'max-age=60',
+49 silly registry.get     etag: '"2CCJ9OEDTDUM8R6O8O20E5729"',
+49 silly registry.get     'x-served-by': 'cache-iad2128-IAD',
+49 silly registry.get     'x-cache': 'HIT',
+49 silly registry.get     'x-cache-hits': '1',
+49 silly registry.get     'x-timer': 'S1409111625.481874,VS0,VE8',
+49 silly registry.get     vary: 'Accept',
+49 silly registry.get     'content-length': '0',
+49 silly registry.get     'keep-alive': 'timeout=10, max=50',
+49 silly registry.get     connection: 'Keep-Alive' } ]
+50 verbose etag karma-commonjs from cache
+51 silly addNameRange number 2 { name: 'karma-commonjs',
+51 silly addNameRange   range: '>=0.2.0-0 <0.3.0-0',
+51 silly addNameRange   hasData: true }
+52 silly addNameRange versions [ 'karma-commonjs',
+52 silly addNameRange   [ '0.0.1',
+52 silly addNameRange     '0.0.2',
+52 silly addNameRange     '0.0.3',
+52 silly addNameRange     '0.0.4',
+52 silly addNameRange     '0.0.5',
+52 silly addNameRange     '0.0.6',
+52 silly addNameRange     '0.0.7',
+52 silly addNameRange     '0.0.8',
+52 silly addNameRange     '0.0.9',
+52 silly addNameRange     '0.0.10',
+52 silly addNameRange     '0.0.11' ] ]
+53 silly lockFile a48cec5d-karma-commonjs-0-2 karma-commonjs@~0.2
+54 silly lockFile a48cec5d-karma-commonjs-0-2 karma-commonjs@~0.2
+55 error Error: No compatible version found: karma-commonjs@'>=0.2.0-0 <0.3.0-0'
+55 error Valid install targets:
+55 error ["0.0.1","0.0.2","0.0.3","0.0.4","0.0.5","0.0.6","0.0.7","0.0.8","0.0.9","0.0.10","0.0.11"]
+55 error     at installTargetsError (/usr/local/Cellar/node/0.10.21/lib/node_modules/npm/lib/cache.js:719:10)
+55 error     at next (/usr/local/Cellar/node/0.10.21/lib/node_modules/npm/lib/cache.js:698:17)
+55 error     at /usr/local/Cellar/node/0.10.21/lib/node_modules/npm/lib/cache.js:675:5
+55 error     at saved (/usr/local/Cellar/node/0.10.21/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:142:7)
+55 error     at /usr/local/Cellar/node/0.10.21/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:133:7
+55 error     at Object.oncomplete (fs.js:107:15)
+56 error If you need help, you may report this log at:
+56 error     <http://github.com/isaacs/npm/issues>
+56 error or email it to:
+56 error     <npm-@googlegroups.com>
+57 error System Darwin 13.3.0
+58 error command "/usr/local/Cellar/node/0.10.21/bin/node" "/usr/local/bin/npm" "install"
+59 error cwd /Users/andrewsmith/Developer/Repositories/donation-calculator
+60 error node -v v0.10.21
+61 error npm -v 1.3.11
+62 verbose exit [ 1, true ]

@@ -1,14 +1,14 @@
 'use strict';
 
-var testFiles = ['./unit/**/*-spec.js'];
+var testFiles = ['./test/unit/**/*-spec.js'];
 var files = [].concat(testFiles);
 
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
-        basePath: './',
+        basePath: './../',
 
         files: files,
-
+        deps: ['./app/**/*.js'],
         autoWatch: false,
         singleRun: true,
         colors: true,

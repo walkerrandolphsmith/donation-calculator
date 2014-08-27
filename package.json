@@ -22,7 +22,6 @@
     "phantomjs": "~1.9.7-15",
     "karma": "~0.12.22",
     "karma-mocha": "~0.1.9",
-    "karma-commonjs-plus": "0.0.24",
     "chai": "~1.9.1",
     "karma-chai": "~0.1.0",
     "sinon": "~1.10.3",

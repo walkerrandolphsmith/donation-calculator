@@ -1,3 +1,3 @@
 'use strict';
-
-var test = require('./donationCalculator');
+//
+//var test = require('./donationCalculator');
