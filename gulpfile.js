@@ -12,7 +12,6 @@ var connect = require('gulp-connect');
 var watch = require('gulp-watch');
 var nunjucks = require('gulp-nunjucks-render');
 var gulpFilter = require('gulp-filter');
-var htmlFilter = gulpFilter(['./templates/**/*.html']);
 var pkg = require('./package.json');
 var config = {
     optimize: args.optimize || false,
@@ -29,7 +28,7 @@ var config = {
 
     },
     html: {
-        src: ['./src/index.html', './templates/**/*.html'],
+        src: ['./src/index.html'],
         dest: './public',
         name: 'index.html'
     }
@@ -57,12 +56,7 @@ gulp.task('dev', ['clean', 'connect'], function () {
         .pipe(watch());
     scripts(scriptsStream)
         .pipe(connect.reload());
-    var htmlStream = gulp.src(config.html.src);
-    htmlStream
-        .pipe(watch({
-            emit: 'all',verbose: true
-        }));
-    html(htmlStream);
+    html(gulp.src(config.html.src));
 });
 
 gulp.task('connect', function () {
