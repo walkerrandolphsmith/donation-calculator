@@ -4,7 +4,7 @@
 describe('src/app/donationCalculator.js', function () {
     var sut;
     beforeEach(function () {
-        sut = require('./test-spec');
+        sut = require('./../../src/app/donationCalculator.js');
     });
     describe('given the target amount to raise is 1200 dollars', function () {
         var target;

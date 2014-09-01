@@ -6,6 +6,6 @@ var donationCalculator = {
 module.exports = donationCalculator;
 
 function calculateCdNumber(target, numberOfPeople) {
-return 100;
+    return 100;
 }
 
