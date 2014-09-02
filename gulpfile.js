@@ -12,7 +12,6 @@ var rename = require('gulp-rename');
 var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
 var watch = require('gulp-watch');
-var nunjucks = require('gulp-nunjucks-render');
 var karmaParseConfig = require('karma/lib/config').parseConfig;
 var pkg = require('./package.json');
 var config = {

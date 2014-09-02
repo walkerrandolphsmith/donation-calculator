@@ -6,23 +6,62 @@ describe('src/app/donationCalculator.js', function () {
     beforeEach(function () {
         sut = require('./../../src/app/donationCalculator.js');
     });
-    describe('given the target amount to raise is 1200 dollars', function () {
+    describe('given no target amount has been set', function () {
         var target;
         beforeEach(function () {
             target = 1200;
         });
-        describe('given there are 20 participants', function () {
-            var participants;
+        describe('when setting the target amount', function () {
+            var actual;
             beforeEach(function () {
-                participants = 20;
+                actual = sut.raise(target);
             });
-            describe('when calculating the total number of CDs required to sell to meet the target amount', function () {
+            it('it should return a donation context with the target amount set to the specified value', function () {
+                actual.getTargetProfit().should.equal(target);
+            });
+        });
+    });
+    describe('given a target amount has been set', function () {
+        var target;
+        beforeEach(function () {
+            target = 1200;
+            sut = sut.raise(target);
+        });
+        describe('given no item to sell has been set', function () {
+            describe('when setting the target item to sell', function () {
+                var item;
+                beforeEach(function () {
+                    item = null;
+                    sut.bySelling(item);
+                });
+                it('it should ???', function () {
+                    throw new Error('Not Implemented');
+                });
+            });
+        });
+        describe('given an item has been specified as the item to sell', function () {
+            var item;
+            beforeEach(function () {
+                item = null;
+                sut.bySelling(item);
+            });
+            describe('when setting the target item to sell', function () {
+                var differentItem;
+                beforeEach(function () {
+                    differentItem = {};
+                    sut.bySelling(differentItem);
+                });
+                it('it should ???', function () {
+                    throw new Error('Not Implemented');
+                });
+            });
+            describe('when getting the number of items required to sell to meet the target goal', function () {
                 var actual;
                 beforeEach(function () {
-                    actual = sut.calculateNumberOfCds(1200, 20);
+                    actual = sut.getTargetNumberOfItems();
                 });
-                it('it should return 100 CDs', function () {
-                    actual.should.equal(100);
+                it('it should ???', function () {
+                    throw new Error('Not Implemented');
                 });
             });
         });

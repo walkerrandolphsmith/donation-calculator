@@ -3,9 +3,9 @@
 var _ = require('underscore');
 var bowerMainFiles = require('main-bower-files');
 var fs = require('fs');
-var bowerConfig = JSON.parse(fs.readFileSync('./bower.json'));
+var bowerConfig = JSON.parse(fs.readFileSync('./../bower.json'));
 var srcFiles = ['./src/app/**/*.js'];
-var testFiles = ['./test/unit/**/*-spec.js'];
+var testFiles = ['./test/unit/**/*.js'];
 var thirdPartyFiles = getThirdPartyFiles();
 var files = [].concat(thirdPartyFiles, testFiles, srcFiles);
 
@@ -18,9 +18,9 @@ module.exports = function (config) {
         singleRun: true,
         colors: true,
 
-        frameworks: ['mocha', 'commonjs', 'chai', 'sinon'],
+        frameworks: ['mocha', 'commonjs', 'sinon-chai', 'chai', 'sinon'],
 
-        browsers: ['Chrome', 'PhantomJS'],
+        browsers: ['PhantomJS'],
         reports: [
             'progress',
             'junit'
@@ -32,7 +32,8 @@ module.exports = function (config) {
             'karma-chrome-launcher',
             'karma-commonjs',
             'karma-chai',
-            'karma-sinon'
+            'karma-sinon',
+            'karma-sinon-chai'
         ],
         preprocessors: {
             'test/unit/**/*.js': ['commonjs'],

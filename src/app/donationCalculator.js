@@ -1,11 +1,14 @@
 'use strict';
 
 var donationCalculator = {
-    calculateNumberOfCds: calculateCdNumber
+    raise: raise
 };
 module.exports = donationCalculator;
 
-function calculateCdNumber(target, numberOfPeople) {
-    return 100;
+function raise(amountToRaise) {
+    return {
+        getTargetProfit: function(){
+            return amountToRaise;
+        }
+    }
 }
-
