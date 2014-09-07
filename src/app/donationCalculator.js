@@ -6,9 +6,5 @@ var donationCalculator = {
 module.exports = donationCalculator;
 
 function raise(amountToRaise) {
-    return {
-        getTargetProfit: function(){
-            return amountToRaise;
-        }
-    }
+   return amountToRaise;
 }
