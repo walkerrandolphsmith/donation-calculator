@@ -1,8 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var path = require('path');
-var karma = require('karma').server;
 var less = require('gulp-less');
 var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
@@ -12,11 +10,12 @@ var rename = require('gulp-rename');
 var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
 var watch = require('gulp-watch');
-var karmaParseConfig = require('karma/lib/config').parseConfig;
+var shell = require('gulp-shell');
 var pkg = require('./package.json');
+
 var config = {
     optimize: args.optimize || false,
-    port: 8094,
+    port: 4000,
     styles: {
         src: './src/styles/index.less',
         dest: './public/css',
@@ -32,9 +31,6 @@ var config = {
         src: ['./src/index.html'],
         dest: './public',
         name: 'index.html'
-    },
-    tests: {
-        unit: './test/karma.config.unit.js'
     }
 };
 
@@ -73,7 +69,6 @@ gulp.task('connect', function () {
 
 gulp.task('html', ['clean'], function () {
     return html(gulp.src(config.html.src));
-
 });
 
 gulp.task('default', ['dev'], function () {
@@ -82,10 +77,7 @@ gulp.task('default', ['dev'], function () {
 gulp.task('build', ['scripts', 'styles', 'html'], function () {
 });
 
-gulp.task('tests-unit', [], function (done) {
-    var karmaConfig = karmaParseConfig(path.resolve(config.tests.unit), {});
-    karma.start(karmaConfig, done);
-});
+gulp.task('test-unit', shell.task(['jest']));
 
 function styles(stream) {
     stream
