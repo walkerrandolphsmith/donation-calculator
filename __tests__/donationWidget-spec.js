@@ -17,7 +17,7 @@ describe('../src/app/donationWidget', function() {
             amountToRaiseInput, 'input');
         expect(input.getDOMNode().getAttribute('value')).toEqual('0');
 
-        // Simulate a click and value is changed
+        // Simulate a change in input and value change
         TestUtils.Simulate.change(input);
         expect(input.getDOMNode().getAttribute('value')).toEqual('10');
 
