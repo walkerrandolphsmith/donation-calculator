@@ -12,12 +12,12 @@ describe('../src/app/donationWidget', function() {
             <donationWidget />
         );
 
-        // Verify that it's Off by default
+        // Verify that it has default value
         var input = TestUtils.findRenderedDOMComponentWithTag(
             amountToRaiseInput, 'input');
         expect(input.getDOMNode().getAttribute('value')).toEqual('0');
 
-        // Simulate a click and verify that it is now On
+        // Simulate a click and value is changed
         TestUtils.Simulate.change(input);
         expect(input.getDOMNode().getAttribute('value')).toEqual('10');
 
