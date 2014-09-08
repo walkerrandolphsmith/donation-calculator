@@ -7,7 +7,7 @@ describe('../src/app/donationWidget', function() {
         var donationWidget = require('../src/app/donationWidget');
         var TestUtils = React.addons.TestUtils;
 
-        // Render a checkbox with label in the document
+        // Render donation widget
         var amountToRaiseInput = TestUtils.renderIntoDocument(
             <donationWidget />
         );
