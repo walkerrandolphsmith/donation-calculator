@@ -11,6 +11,7 @@ var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
 var watch = require('gulp-watch');
 var shell = require('gulp-shell');
+var react = require('gulp-react');
 var pkg = require('./package.json');
 
 var config = {
@@ -22,9 +23,10 @@ var config = {
         name: pkg.name + '.css'
     },
     scripts: {
-        src: './src/app/index.js',
+        src: './src/app/**/*.js',
         dest: './public/js',
-        name: pkg.name + '.js'
+        name: pkg.name + '.js',
+        build: './build'
 
     },
     html: {
@@ -34,29 +36,47 @@ var config = {
     }
 };
 
-gulp.task('styles', ['clean'], function () {
-    return  styles(gulp.src(config.styles.src));
+gulp.task('html', ['clean'], function() {
+    return gulp.src(config.html.src)
+        .pipe(gulp.dest(config.html.dest));
 });
 
-gulp.task('scripts', ['clean'], function () {
-    return scripts(gulp.src(config.scripts.src));
+gulp.task('styles', ['clean'], function () {
+    return gulp.src(config.styles.src)
+        .pipe(less())
+        .pipe(rename(config.styles.name))
+        .pipe(minifyCss())
+        .pipe(gulp.dest(config.styles.dest));
+});
+
+gulp.task('scripts', ['clean', 'reactify'], function () {
+    return gulp.src('./build/index.js')
+     .pipe(browserify())
+     .pipe(rename(config.scripts.name))
+     .pipe(uglify())
+     .pipe(gulp.dest(config.scripts.dest));
+});
+
+gulp.task('reactify', ['clean'], function() {
+    return gulp.src(config.scripts.src)
+        .pipe(react())
+        .pipe(gulp.dest(config.scripts.build));
 });
 
 gulp.task('clean', [], function () {
-    return gulp.src(config.html.dest, {read: false})
-        .pipe(clean());
+    return gulp.src([config.html.dest, config.scripts.build], {
+            read: false
+          })
+   .pipe(clean());
 });
 
-gulp.task('dev', ['clean', 'connect'], function () {
-    var styleStream = gulp.src(config.styles.src)
-        .pipe(watch());
-    styles(styleStream)
+gulp.task('default', ['dev'], function () {
+});
+
+gulp.task('dev', ['clean', 'connect', 'build'], function() {
+      return gulp.src(config.html.dest)
+        .pipe(watch())
         .pipe(connect.reload());
-    var scriptsStream = gulp.src(config.scripts.src)
-        .pipe(watch());
-    scripts(scriptsStream)
-        .pipe(connect.reload());
-    html(gulp.src(config.html.src));
 });
 
 gulp.task('connect', function () {
@@ -67,40 +87,7 @@ gulp.task('connect', function () {
     });
 });
 
-gulp.task('html', ['clean'], function () {
-    return html(gulp.src(config.html.src));
-});
-
-gulp.task('default', ['dev'], function () {
-});
-
 gulp.task('build', ['scripts', 'styles', 'html'], function () {
 });
 
 gulp.task('test-unit', shell.task(['jest']));
-
-function styles(stream) {
-    stream
-        .pipe(less())
-        .pipe(rename(config.styles.name));
-    if (config.optimize) {
-        stream.pipe(minifyCss());
-    }
-    return stream
-        .pipe(gulp.dest(config.styles.dest));
-
-}
-function scripts(stream) {
-    stream
-        .pipe(browserify())
-        .pipe(rename(config.scripts.name));
-    if (config.optimize) {
-        stream.pipe(uglify());
-    }
-    return stream
-        .pipe(gulp.dest(config.scripts.dest));
-}
-function html(stream) {
-    return stream
-        .pipe(gulp.dest(config.html.dest));
-}
